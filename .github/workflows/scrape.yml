@@ -1,0 +1,28 @@
+name: Run scrapers
+
+on:
+  schedule:
+    - cron: "0 */2 * * *" # every 2 hours — tighten for a live demo
+  workflow_dispatch: {} # lets you trigger it manually from the Actions tab
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm start
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          BRIGHTDATA_API_TOKEN: ${{ secrets.BRIGHTDATA_API_TOKEN }}
+          COLLECTOR_NEWEGG: ${{ secrets.COLLECTOR_NEWEGG }}
+          COLLECTOR_BESTBUY: ${{ secrets.COLLECTOR_BESTBUY }}
+          COLLECTOR_WALMART: ${{ secrets.COLLECTOR_WALMART }}
+          COLLECTOR_MICROCENTER: ${{ secrets.COLLECTOR_MICROCENTER }}
+          COLLECTOR_STEAM: ${{ secrets.COLLECTOR_STEAM }}
+          COLLECTOR_GOG: ${{ secrets.COLLECTOR_GOG }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}

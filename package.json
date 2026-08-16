@@ -1,0 +1,32 @@
+{
+  "name": "drop-picker",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Self-healing price & restock tracker for PC parts, RAM, games, and consoles — built on Bright Data Scraper Studio + Supabase.",
+  "type": "module",
+  "scripts": {
+    "start": "tsx scrapers/run.ts",
+    "health": "tsx scrapers/health.ts",
+    "setup": "tsx scripts/setup.ts",
+    "test:collector": "tsx scripts/test-collector.ts",
+    "cleanup": "tsx scripts/cleanup.ts",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0",
+    "eslint": "^9.8.0",
+    "@eslint/js": "^9.8.0",
+    "typescript-eslint": "^8.0.0",
+    "prettier": "^3.3.0",
+    "@types/node": "^20.14.0"
+  },
+  "license": "MIT"
+}
